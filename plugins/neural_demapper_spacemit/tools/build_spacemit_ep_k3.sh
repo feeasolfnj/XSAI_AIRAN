@@ -9,7 +9,7 @@ flags=(
   -march=rv64gcv_zba_zbb_zbs_zfhmin_zvfh -mabi=lp64d
   -mrvv-vector-bits=scalable
 )
-libs=(-lonnxruntime -lspacemit_ep -lpthread -ldl)
+libs=(-L/usr/lib -lonnxruntime -lspacemit_ep -lpthread -ldl)
 
 g++ "${flags[@]}" "$src" "${libs[@]}" \
   -o build/libdemapper_spacemit_ep.so

@@ -7,6 +7,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <time.h>
 #include <memory>
 #include <riscv_vector.h>
 #include <string>
@@ -268,6 +269,14 @@ extern "C" int32_t demapper_shutdown(void) {
   return 0;
 }
 
+/* ══ 计时插桩：CLOCK_MONOTONIC，每 500 次上报（每线程私有）══ */
+struct DmTimer { unsigned long long sum_ns, max_ns, cnt; unsigned long long sum_ep, max_ep; };
+static thread_local DmTimer g_dm_timer;
+static inline unsigned long long dm_now_ns(void) {
+  struct timespec ts; clock_gettime(CLOCK_MONOTONIC, &ts);
+  return (unsigned long long)ts.tv_sec * 1000000000ull + (unsigned long long)ts.tv_nsec;
+}
+
 extern "C" int demapper_compute_llr(int32_t *iq, c16_t *mag, c16_t *magb,
                                      c16_t *magc, int16_t *llr, uint32_t n,
                                      uint8_t symbol, uint8_t qm) {
@@ -278,10 +287,30 @@ extern "C" int demapper_compute_llr(int32_t *iq, c16_t *mag, c16_t *magb,
   if (!iq || !mag || !llr || n > SPACEMIT_EP_MAX_RE || !ort_session) return 0;
 
   try {
+    const unsigned long long ts0 = dm_now_ns();
     preprocess(reinterpret_cast<const int16_t *>(iq),
                reinterpret_cast<const int16_t *>(mag), n);
+    const unsigned long long te0 = dm_now_ns();
     run_model(n);
+    const unsigned long long te1 = dm_now_ns();
+    g_dm_timer.sum_ep += (te1 - te0);
+    if ((te1 - te0) > g_dm_timer.max_ep) g_dm_timer.max_ep = (te1 - te0);
     quantize(llr, n);
+    const unsigned long long ts1 = dm_now_ns();
+    const unsigned long long dt = ts1 - ts0;
+    g_dm_timer.sum_ns += dt;
+    g_dm_timer.cnt++;
+    if (dt > g_dm_timer.max_ns) g_dm_timer.max_ns = dt;
+    if ((g_dm_timer.cnt % 500) == 0) {
+      std::printf("[dm_timing] nb_re=%u n=%llu 总: avg %.1f max %.1f | run_model(ORT/EP+A100): avg %.1f max %.1f | 其余(X100 RVV): avg %.1f\n",
+                  n, g_dm_timer.cnt,
+                  (double)g_dm_timer.sum_ns / g_dm_timer.cnt / 1000.0,
+                  (double)g_dm_timer.max_ns / 1000.0,
+                  (double)g_dm_timer.sum_ep / g_dm_timer.cnt / 1000.0,
+                  (double)g_dm_timer.max_ep / 1000.0,
+                  (double)(g_dm_timer.sum_ns - g_dm_timer.sum_ep) / g_dm_timer.cnt / 1000.0);
+      std::fflush(stdout);
+    }
     calls.fetch_add(1, std::memory_order_relaxed);
     return 1;
   } catch (const std::exception &error) {

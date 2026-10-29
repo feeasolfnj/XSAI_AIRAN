@@ -60,3 +60,9 @@ artifacts/
 *.pem
 *.key
 *.uicc.conf
+
+# Local OAI worktree and editor backups are not publication sources.
+/.work/
+*.orig-*
+*.orig
+*~

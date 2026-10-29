@@ -1,0 +1,41 @@
+{
+  "snapshot_date": "2026-10-29",
+  "repository": "https://github.com/feeasolfnj/XSAI_AIRAN",
+  "source_project": "XSAI_AIRAN",
+  "source_head": "18276ae0b271dea9b68420eecc58dd8b45e28787",
+  "source_root": "/home/ubuntu/XSAI_AIRAN",
+  "local_modified_files": [
+    "plugins/neural_demapper_spacemit/install.sh",
+    "plugins/neural_demapper_spacemit/run_smoke.sh",
+    "plugins/neural_demapper_spacemit/src/demapper_spacemit_ep.cpp",
+    "plugins/neural_demapper_spacemit/tools/build_spacemit_ep_k3.sh"
+  ],
+  "source_files": 4438,
+  "source_bytes": 104236505,
+  "verified_files": 4436,
+  "content_digest_algorithm": "SHA256(sorted(path + NUL + canonical Git blob SHA1 + LF)); Git text normalization applies",
+  "content_sha256": "6ecf98ac38683f2f42cf9b5c34e64074bcc623ad4776e92e0cd59596d1f56e8e",
+  "digest_exclusions": [
+    ".gitignore",
+    "PUBLICATION_SNAPSHOT.json",
+    "README.md",
+    "docs/K3_SNAPSHOT_20261029.md",
+    "scripts/verify-publication-snapshot.py"
+  ],
+  "oai_worktree": {
+    "path": ".work/oai-a-github",
+    "published_path": "vendor/openairinterface5g",
+    "source_files_compared": 3939,
+    "changed_or_added": 0,
+    "plugins_link": "../../plugins"
+  },
+  "excluded": [
+    ".git local metadata and credentials",
+    ".work OAI builds (source equals vendor snapshot)",
+    "results, runtime logs, binaries, caches",
+    "untracked .orig backup files",
+    "external benchmark/LDPC instruction experiment directories"
+  ],
+  "validation": "Source snapshot and file-content verification; not a clean rebuild or real-radio acceptance test",
+  "license": "Preserve root Apache-2.0 and component-specific notices including OAI LICENSE; see existing component documentation"
+}
