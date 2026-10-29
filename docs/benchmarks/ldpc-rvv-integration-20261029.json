@@ -1,0 +1,89 @@
+{
+  "source": "vendored OAI with integrated BG1/Z384 RVV dispatch",
+  "tests": {
+    "table_checks": 2,
+    "native_random_expanded_matrices": 16,
+    "native_output_bytes_per_matrix": 17664,
+    "full_tb_cases": [
+      {
+        "rb": 50,
+        "mcs": 14,
+        "seed": 20261022,
+        "formal_tbs": 100,
+        "reference": "byte-for-byte original encoder",
+        "verification": "passed"
+      },
+      {
+        "rb": 50,
+        "mcs": 14,
+        "seed": 42,
+        "formal_tbs": 100,
+        "reference": "byte-for-byte original encoder",
+        "verification": "passed"
+      },
+      {
+        "rb": 50,
+        "mcs": 14,
+        "seed": 0,
+        "formal_tbs": 100,
+        "reference": "byte-for-byte original encoder",
+        "verification": "passed"
+      },
+      {
+        "rb": 6,
+        "mcs": 4,
+        "seed": 20261022,
+        "formal_tbs": 100,
+        "reference": "byte-for-byte original encoder",
+        "verification": "passed"
+      },
+      {
+        "rb": 6,
+        "mcs": 4,
+        "seed": 42,
+        "formal_tbs": 100,
+        "reference": "byte-for-byte original encoder",
+        "verification": "passed"
+      },
+      {
+        "rb": 6,
+        "mcs": 4,
+        "seed": 0,
+        "formal_tbs": 100,
+        "reference": "byte-for-byte original encoder",
+        "verification": "passed"
+      },
+      {
+        "rb": 106,
+        "mcs": 28,
+        "seed": 20261022,
+        "formal_tbs": 100,
+        "reference": "byte-for-byte original encoder",
+        "verification": "passed"
+      },
+      {
+        "rb": 106,
+        "mcs": 28,
+        "seed": 42,
+        "formal_tbs": 100,
+        "reference": "byte-for-byte original encoder",
+        "verification": "passed"
+      },
+      {
+        "rb": 106,
+        "mcs": 28,
+        "seed": 0,
+        "formal_tbs": 100,
+        "reference": "byte-for-byte original encoder",
+        "verification": "passed"
+      }
+    ],
+    "total_formal_tbs": 900,
+    "disable_macro_preprocessor": "original path confirmed"
+  },
+  "original_production_library_unchanged": true,
+  "limits": "Encoder TU compiled using existing XSAI ABI flags, isolated encoder callback linked to existing segment/rate-matching objects. Does not claim a fresh full OAI build, RFsim, or live-radio validation.",
+  "validation_date": "2026-10-29",
+  "implementation": "Integrated vendor source dispatch; exact tables and native reference tests passed",
+  "scope": "Independent candidate compilation and callback validation; original K3 production libraries not installed or overwritten"
+}

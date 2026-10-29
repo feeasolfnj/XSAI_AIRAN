@@ -1,0 +1,165 @@
+{
+  "rows": [
+    {
+      "variant": "original",
+      "seed": 20261022,
+      "trials": 200,
+      "wall_us": 335.84355840999996,
+      "crc_and_payload_copy_us": 7.387095,
+      "segmentation_and_cb_crc_us": 7.45274,
+      "ldpc_encode_us": 234.72393499999998,
+      "rate_matching_us": 1.3981450000000002,
+      "interleaving_us": 8.3558,
+      "output_packing_us": 72.66772,
+      "ldpc_input_us": 22.186655000000002,
+      "ldpc_prepare_us": 0.207475,
+      "ldpc_parity_us": 208.719155,
+      "other_us": 3.85812341
+    },
+    {
+      "variant": "rvv64_a4",
+      "seed": 20261022,
+      "trials": 200,
+      "wall_us": 235.08331040000002,
+      "crc_and_payload_copy_us": 7.425025000000001,
+      "segmentation_and_cb_crc_us": 7.515415000000001,
+      "ldpc_encode_us": 133.90334000000001,
+      "rate_matching_us": 1.4050049999999998,
+      "interleaving_us": 8.412025,
+      "output_packing_us": 72.669335,
+      "ldpc_input_us": 22.30769,
+      "ldpc_prepare_us": 0.18353000000000003,
+      "ldpc_parity_us": 107.95831,
+      "other_us": 3.7531654
+    },
+    {
+      "variant": "rvv64_a4",
+      "seed": 42,
+      "trials": 200,
+      "wall_us": 233.19440308,
+      "crc_and_payload_copy_us": 7.441855,
+      "segmentation_and_cb_crc_us": 7.464155,
+      "ldpc_encode_us": 132.77793499999999,
+      "rate_matching_us": 1.393305,
+      "interleaving_us": 7.98562,
+      "output_packing_us": 72.35872,
+      "ldpc_input_us": 22.17858,
+      "ldpc_prepare_us": 0.17981999999999998,
+      "ldpc_parity_us": 107.03996,
+      "other_us": 3.77281308
+    },
+    {
+      "variant": "original",
+      "seed": 42,
+      "trials": 200,
+      "wall_us": 335.93504805,
+      "crc_and_payload_copy_us": 7.489765,
+      "segmentation_and_cb_crc_us": 7.44978,
+      "ldpc_encode_us": 234.87395,
+      "rate_matching_us": 1.3991999999999998,
+      "interleaving_us": 8.15563,
+      "output_packing_us": 72.721695,
+      "ldpc_input_us": 22.17313,
+      "ldpc_prepare_us": 0.20393999999999998,
+      "ldpc_parity_us": 208.83667499999999,
+      "other_us": 3.8450280500000003
+    },
+    {
+      "variant": "original",
+      "seed": 0,
+      "trials": 200,
+      "wall_us": 336.885421995,
+      "crc_and_payload_copy_us": 8.50979,
+      "segmentation_and_cb_crc_us": 7.458535,
+      "ldpc_encode_us": 234.312955,
+      "rate_matching_us": 1.40811,
+      "interleaving_us": 8.39189,
+      "output_packing_us": 72.945015,
+      "ldpc_input_us": 22.1554,
+      "ldpc_prepare_us": 0.18939,
+      "ldpc_parity_us": 208.498785,
+      "other_us": 3.8591269949999996
+    },
+    {
+      "variant": "rvv64_a4",
+      "seed": 0,
+      "trials": 200,
+      "wall_us": 234.10440420499998,
+      "crc_and_payload_copy_us": 7.417255,
+      "segmentation_and_cb_crc_us": 7.530635,
+      "ldpc_encode_us": 132.59703,
+      "rate_matching_us": 1.409535,
+      "interleaving_us": 8.483945,
+      "output_packing_us": 72.9281,
+      "ldpc_input_us": 22.226255000000002,
+      "ldpc_prepare_us": 0.18566500000000002,
+      "ldpc_parity_us": 106.785835,
+      "other_us": 3.737904205
+    }
+  ],
+  "summary": {
+    "original": {
+      "wall_us": 336.2213428183333,
+      "crc_and_payload_copy_us": 7.795550000000001,
+      "segmentation_and_cb_crc_us": 7.453685,
+      "ldpc_encode_us": 234.63694666666666,
+      "rate_matching_us": 1.4018183333333332,
+      "interleaving_us": 8.301106666666668,
+      "output_packing_us": 72.77814333333333,
+      "ldpc_input_us": 22.171728333333334,
+      "ldpc_prepare_us": 0.20026833333333335,
+      "ldpc_parity_us": 208.68487166666668,
+      "other_us": 3.854092818333333
+    },
+    "rvv64_a4": {
+      "wall_us": 234.12737256166668,
+      "crc_and_payload_copy_us": 7.428045,
+      "segmentation_and_cb_crc_us": 7.503401666666666,
+      "ldpc_encode_us": 133.09276833333334,
+      "rate_matching_us": 1.402615,
+      "interleaving_us": 8.293863333333332,
+      "output_packing_us": 72.65205166666668,
+      "ldpc_input_us": 22.237508333333334,
+      "ldpc_prepare_us": 0.183005,
+      "ldpc_parity_us": 107.26136833333334,
+      "other_us": 3.7546275616666667
+    }
+  },
+  "frequency_before_khz": "2200000",
+  "frequency_after_khz": "2200000",
+  "fallback_checks": [
+    {
+      "rb": 6,
+      "mcs": 4,
+      "verification": "byte_for_byte_passed",
+      "calls": 15
+    },
+    {
+      "rb": 106,
+      "mcs": 28,
+      "verification": "byte_for_byte_passed",
+      "calls": 15
+    }
+  ],
+  "protocol": {
+    "cpu": "K3 X100 CPU0",
+    "frequency_ghz": 2.2,
+    "rb": 50,
+    "carrier_rb": 106,
+    "mcs": 14,
+    "symbols": 13,
+    "codeblocks": 2,
+    "timing": "full TB coding callback, CLOCK_MONOTONIC_RAW",
+    "cycles": "off",
+    "warmup_per_process": 10,
+    "formal_trials_per_seed": 200,
+    "seeds": [
+      20261022,
+      42,
+      0
+    ],
+    "payload": "one seeded random payload per process; repeated trials",
+    "comparison": "byte-for-byte original encoder outside timing"
+  },
+  "implementation_note": "2026-10-29 instruction experiment: 64-byte LMUL2 four accumulators; repository integration retains other BG/Zc cases in the original dispatch."
+}

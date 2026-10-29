@@ -36,6 +36,16 @@
 #include "assertions.h"
 #include "common/utils/LOG/log.h"
 
+/* The table describes the existing 128-bit input layout. Preserve the
+ * original encoder on other targets/layouts or when explicitly disabled. */
+#if defined(__riscv_vector) && !defined(__AVX2__) && !defined(__AVX512F__) && !defined(XSAI_LDPC_DISABLE_RVV_BG1_Z384)
+#include "ldpc_bg1_z384_rvv.h"
+#define XSAI_USE_LDPC_BG1_Z384_RVV 1
+#else
+#define XSAI_USE_LDPC_BG1_Z384_RVV 0
+#endif
+
+
 
 #ifdef __AVX512F__
 #include "ldpc384_simd512_byte.c"
@@ -129,7 +139,11 @@ static void encode_parity_check_part_optim(uint8_t *cc, uint8_t *d, short BG,sho
         ldpc352_byte(c, d);
         break;
       case 384:
+#if XSAI_USE_LDPC_BG1_Z384_RVV
+        xsai_ldpc_bg1_z384_rvv(c, d);
+#else
         ldpc384_byte(c, d);
+#endif
         break;
       default:
         AssertFatal(false, "BG %d Zc %d is not supported yet\n", BG, Zc);

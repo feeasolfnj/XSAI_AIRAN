@@ -12,9 +12,9 @@
   ],
   "source_files": 4438,
   "source_bytes": 104236505,
-  "verified_files": 4436,
+  "verified_files": 4443,
   "content_digest_algorithm": "SHA256(sorted(path + NUL + canonical Git blob SHA1 + LF)); Git text normalization applies",
-  "content_sha256": "6ecf98ac38683f2f42cf9b5c34e64074bcc623ad4776e92e0cd59596d1f56e8e",
+  "content_sha256": "5d6039eb680906b569202eab2c67983ca7d2ef136e4e14246739dd514e185246",
   "digest_exclusions": [
     ".gitignore",
     "PUBLICATION_SNAPSHOT.json",
@@ -22,13 +22,6 @@
     "docs/K3_SNAPSHOT_20261029.md",
     "scripts/verify-publication-snapshot.py"
   ],
-  "oai_worktree": {
-    "path": ".work/oai-a-github",
-    "published_path": "vendor/openairinterface5g",
-    "source_files_compared": 3939,
-    "changed_or_added": 0,
-    "plugins_link": "../../plugins"
-  },
   "excluded": [
     ".git local metadata and credentials",
     ".work OAI builds (source equals vendor snapshot)",
@@ -36,6 +29,45 @@
     "untracked .orig backup files",
     "external benchmark/LDPC instruction experiment directories"
   ],
-  "validation": "Source snapshot and file-content verification; not a clean rebuild or real-radio acceptance test",
-  "license": "Preserve root Apache-2.0 and component-specific notices including OAI LICENSE; see existing component documentation"
+  "validation": "Source publication plus independent modified encoder TU and callback checks; not a full fresh OAI build or RFsim/live-radio validation",
+  "license": "Preserve root Apache-2.0 and component-specific notices including OAI LICENSE; see existing component documentation",
+  "baseline_source_files": 4438,
+  "updates": [
+    {
+      "date": "2026-10-29",
+      "kind": "integrated_ldpc_bg1_z384_rvv",
+      "source_base_commit": "f0f0c2aa44b7e0d9d2d4a16bb966492b852ca190",
+      "files": [
+        "vendor/openairinterface5g/openair1/PHY/CODING/nrLDPC_encoder/ldpc_encode_parity_check.c",
+        "vendor/openairinterface5g/openair1/PHY/CODING/nrLDPC_encoder/ldpc_bg1_z384_rvv.h",
+        "tests/test_ldpc_rvv_tables.py",
+        "tests/ldpc_rvv_correctness.c",
+        "scripts/check-ldpc-rvv.py",
+        "docs/benchmarks/ldpc-rvv-20261029.json",
+        "docs/benchmarks/ldpc-rvv-integration-20261029.json",
+        "docs/LDPC_RVV_OPTIMIZATION.md",
+        "README.md",
+        "docs/K3_SNAPSHOT_20261029.md",
+        "scripts/verify-publication-snapshot.py"
+      ],
+      "enabled_when": "RISC-V RVV, original 128-bit layout, BG1/Zc384; opt-out macro available",
+      "tests": "2 table/guard tests; 16 native random matrices; 900 formal full-TB original-output comparisons; disable macro preprocessing",
+      "production_deployment": "not performed"
+    }
+  ],
+  "oai_baseline_comparison": {
+    "path": ".work/oai-a-github",
+    "published_path": "vendor/openairinterface5g",
+    "source_files_compared": 3939,
+    "changed_or_added": 0,
+    "plugins_link": "../../plugins"
+  },
+  "oai_worktree": {
+    "published_path": "vendor/openairinterface5g",
+    "changes_since_baseline": [
+      "nrLDPC_encoder/ldpc_encode_parity_check.c",
+      "nrLDPC_encoder/ldpc_bg1_z384_rvv.h"
+    ],
+    "note": "Original K3 .work source comparison applies to the baseline before this documented update"
+  }
 }

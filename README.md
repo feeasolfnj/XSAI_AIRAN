@@ -2,6 +2,8 @@
 
 > **2026-10-29 K3 源码快照**：当前目录和 vendor 源码核对、包含/排除内容及克隆方法见 [快照说明](docs/K3_SNAPSHOT_20261029.md)。快照保留本地未提交的源码改动；下方历史实验记录不代表本次重新完成验证。
 
+**新增：** 已集成 [K3 X100 LDPC RVV 指令优化](docs/LDPC_RVV_OPTIMIZATION.md)，RISC-V/RVV 的 BG1、Zc384 配置自动选择新内核；提供原版对照开关和正确性检查。
+
 基于 Sionna Research Kit 与 OpenAirInterface (OAI) 的 5G NR 实验项目，重点是把真实空口 gNB、5G 核心网和 AI 物理层插件运行在进迭时空 K3 上，并研究 X100/A100 异构调度与物理层耗时。本仓库为 `feeasolfnj/XSAI_AIRAN`；本次源码快照取自 K3 的 `/home/ubuntu/XSAI_AIRAN`。旧文档中的 `/home/ubuntu/sionna-rk` 属于历史部署路径。
 
 本仓库是**源码、适配器、模型、脚本和可复现实验说明**，不是包含 SIM 数据、数据库、编译产物和设备配置的一键镜像。首次接触请先读 [项目与环境指南](docs/K3_PROJECT_GUIDE.md)；已经部署好 K3 的读者可看 [真实 UE 接入教程](tutorials/quickstart/README.md)。

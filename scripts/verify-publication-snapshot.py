@@ -31,4 +31,4 @@ for name,mode in paths:
     h.update(name.encode()+b'\0'+oid.encode()+b'\n')
 if len(paths)!=manifest['verified_files'] or h.hexdigest()!=manifest['content_sha256']:
     raise SystemExit('Source differs from the K3 publication snapshot')
-print('PASS:',len(paths),'source files match the K3 snapshot after Git text normalization; symlinks and executable permissions checked')
+print('PASS:',len(paths),'source files match the published K3 baseline plus documented updates after Git text normalization; symlinks and executable permissions checked')
