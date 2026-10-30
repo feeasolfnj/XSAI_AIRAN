@@ -1,0 +1,695 @@
+{
+  "measurement_date": "2026-10-30",
+  "source_base_commit": "c733e26846af871a56f13cc0ab7c5546db1b5711",
+  "benchmark": {
+    "conditions": {
+      "cpu": "X100 CPU0",
+      "frequency_khz": "2200000",
+      "rb": 50,
+      "carrier_rb": 106,
+      "mcs": 9,
+      "symbols": 12,
+      "seeds": [
+        20261022,
+        42,
+        0
+      ],
+      "warmup": 10,
+      "formal_tbs_per_variant": 600
+    },
+    "change": "Only BG1/Zc224 parity kernel; both retain RVV output packing and BG1/Zc384 parity optimization",
+    "summary": [
+      {
+        "variant": "baseline",
+        "formal_tbs": 600,
+        "mean_us": 137.20255267,
+        "cycles_per_tb": 300012.5566666667,
+        "average_cores": 1.0037922204789544
+      },
+      {
+        "variant": "z224",
+        "formal_tbs": 600,
+        "mean_us": 98.663112905,
+        "cycles_per_tb": 214046.26,
+        "average_cores": 1.0004351551497062
+      }
+    ],
+    "gain_percent": 28.08944805691419,
+    "hardware_cycles": "perf_event_open user-space CPU cycles; no frequency conversion; includes small measurement overhead"
+  },
+  "rfsim": {
+    "conditions": {
+      "cpu": "K3 X100 CPU0-7 allowed for both gNB and UE",
+      "frequency_ghz": 2.2,
+      "carrier_rb": 106,
+      "dl_rb": 50,
+      "ul_rb": 50,
+      "dl_mcs": 9,
+      "ul_mcs": 14,
+      "band": 78,
+      "numerology": 1,
+      "archived_config_sha256": "435ac9e5f40651ad0a8ef4cfbd5832b5407297e4db336e707652d11ec5724f1d",
+      "warmup_seconds_at_least": 20,
+      "extra_awgn": false
+    },
+    "profiles": [
+      {
+        "profile": "original",
+        "mean_us": 355.36807751091703,
+        "window_calls": 4580,
+        "window_seconds": 30.68043843912892,
+        "window_timers": {
+          "L1 Tx processing": {
+            "calls": 45801,
+            "mean_us": 649.9583784196853
+          },
+          "DCI generation": {
+            "calls": 9160,
+            "mean_us": 18.11620545851529
+          },
+          "RX phase compensation": {
+            "calls": 36641,
+            "mean_us": 269.312828580006
+          },
+          "DLSCH encoding": {
+            "calls": 4580,
+            "mean_us": 355.36807751091703
+          },
+          "DLSCH segmentation": {
+            "calls": 4580,
+            "mean_us": 9.359759170305678
+          },
+          "LDPC enc input": {
+            "calls": 4580,
+            "mean_us": 14.808316593886461
+          },
+          "LDPC enc parity": {
+            "calls": 4580,
+            "mean_us": 224.44536266375542
+          },
+          "LDPC enc output": {
+            "calls": 4580,
+            "mean_us": 34.786194323144095
+          },
+          "DLSCH rate matching": {
+            "calls": 4580,
+            "mean_us": 3.033470524017467
+          },
+          "DLSCH interleaving": {
+            "calls": 4580,
+            "mean_us": 7.8336187772925765
+          },
+          "DLSCH scrambling": {
+            "calls": 4580,
+            "mean_us": 2.7268851528384275
+          },
+          "DLSCH modulation": {
+            "calls": 4580,
+            "mean_us": 10.023715938864626
+          },
+          "DLSCH precoding": {
+            "calls": 4580,
+            "mean_us": 40.73423799126638
+          },
+          "L1 Rx processing": {
+            "calls": 13740,
+            "mean_us": 452.2269002911208
+          },
+          "UL segment deinterleaving": {
+            "calls": 9160,
+            "mean_us": 18.83918864628821
+          },
+          "UL segment rate recovery": {
+            "calls": 9160,
+            "mean_us": 31.123876855895205
+          },
+          "UL segments decoding": {
+            "calls": 9160,
+            "mean_us": 517.8515877729258
+          },
+          "UL LDPC llr2llrProcBuf": {
+            "calls": 9160,
+            "mean_us": 8.93867423580786
+          },
+          "UL LDPC llr2CnProcBuf": {
+            "calls": 9160,
+            "mean_us": 22.763963318777297
+          },
+          "UL LDPC cnProc": {
+            "calls": 27480,
+            "mean_us": 39.79803275109171
+          },
+          "UL LDPC bnProcPc": {
+            "calls": 27480,
+            "mean_us": 26.45875327510917
+          },
+          "UL LDPC cn2bnProcBuf": {
+            "calls": 27480,
+            "mean_us": 26.412008733624454
+          },
+          "UL LDPC bn2cnProcBuf": {
+            "calls": 27480,
+            "mean_us": 24.2519672489083
+          },
+          "PUSCH channel estimation": {
+            "calls": 4580,
+            "mean_us": 376.3775519650655
+          },
+          "PUSCH channel-estimation antenna processing": {
+            "calls": 13740,
+            "mean_us": 83.10310131004366
+          },
+          "PUSCH channel measurement": {
+            "calls": 13740,
+            "mean_us": 35.86076943231441
+          },
+          "PUSCH initialization": {
+            "calls": 4580,
+            "mean_us": 25.265001746724895
+          },
+          "PUSCH symbol processing": {
+            "calls": 4580,
+            "mean_us": 279.2742742358078
+          },
+          "PUSCH resource extraction": {
+            "calls": 59540,
+            "mean_us": 1.4787694323144105
+          },
+          "PUSCH channel compensation": {
+            "calls": 59540,
+            "mean_us": 27.690304803493447
+          },
+          "PUSCH LLR computation": {
+            "calls": 59540,
+            "mean_us": 7.290585152838428
+          },
+          "UL Indication": {
+            "calls": 13740,
+            "mean_us": 6.555385152838429
+          },
+          "Slot Indication": {
+            "calls": 45801,
+            "mean_us": 19.210127922971115
+          },
+          "PUSCH inner-receiver": {
+            "calls": 4580,
+            "mean_us": 686.1636410480351
+          },
+          "Schedule Response": {
+            "calls": 45801,
+            "mean_us": 2.2248531254776096
+          },
+          "feprx": {
+            "calls": 13740,
+            "mean_us": 317.05371397379906
+          },
+          "feprx_task (3 symbols)": {
+            "calls": 13740,
+            "mean_us": 279.3328716157206
+          },
+          "symbol_dft (RX)": {
+            "calls": 13740,
+            "mean_us": 47.16725240174672
+          },
+          "feptx_copy/precoding (per port, half_slot)": {
+            "calls": 55740,
+            "mean_us": 8.824592034445642
+          },
+          "feptx_ofdm (per port, half_slot)": {
+            "calls": 36640,
+            "mean_us": 283.90473179585155
+          },
+          "feptx_total": {
+            "calls": 36640,
+            "mean_us": 337.85482450873366
+          },
+          "symbol_idft (TX)": {
+            "calls": 36640,
+            "mean_us": 43.40658938318777
+          }
+        },
+        "link_window": {
+          "dl_harq": {
+            "total_delta": 4608,
+            "error_delta": 0,
+            "start": {
+              "total": 1790,
+              "errors": 1
+            },
+            "end": {
+              "total": 6398,
+              "errors": 1
+            }
+          },
+          "ul_harq": {
+            "total_delta": 4608,
+            "error_delta": 0,
+            "start": {
+              "total": 1790,
+              "errors": 1
+            },
+            "end": {
+              "total": 6398,
+              "errors": 1
+            }
+          }
+        },
+        "gnb_error_deltas": {
+          "dlsch": 0,
+          "ulsch": 0
+        },
+        "cpu0_khz": "2200000",
+        "observed_ldpc_shapes": [
+          "\u001b[0m[RF_DL_LDPC_SHAPE] BG=1 Zc=224 segments=2 first_seg=0 K=4928"
+        ],
+        "codec_sha256": "3ec4efd81a5147f260c46e9397fb729c6ae02f4dc3af188411efdc4631c9570b"
+      },
+      {
+        "profile": "previous",
+        "mean_us": 319.8839491856678,
+        "window_calls": 4605,
+        "window_seconds": 30.63933539390564,
+        "window_timers": {
+          "L1 Tx processing": {
+            "calls": 46045,
+            "mean_us": 646.3174400043436
+          },
+          "DCI generation": {
+            "calls": 9209,
+            "mean_us": 17.732556737973724
+          },
+          "RX phase compensation": {
+            "calls": 36835,
+            "mean_us": 269.43635808334466
+          },
+          "DLSCH encoding": {
+            "calls": 4605,
+            "mean_us": 319.8839491856678
+          },
+          "DLSCH segmentation": {
+            "calls": 4605,
+            "mean_us": 9.182981758957654
+          },
+          "LDPC enc input": {
+            "calls": 4605,
+            "mean_us": 14.849026058631921
+          },
+          "LDPC enc parity": {
+            "calls": 4605,
+            "mean_us": 221.23105081433224
+          },
+          "LDPC enc output": {
+            "calls": 4605,
+            "mean_us": 4.0570521172638445
+          },
+          "DLSCH rate matching": {
+            "calls": 4605,
+            "mean_us": 2.9466944625407163
+          },
+          "DLSCH interleaving": {
+            "calls": 4605,
+            "mean_us": 6.737403257328991
+          },
+          "DLSCH scrambling": {
+            "calls": 4605,
+            "mean_us": 2.7180169381107495
+          },
+          "DLSCH modulation": {
+            "calls": 4605,
+            "mean_us": 10.065894462540713
+          },
+          "DLSCH precoding": {
+            "calls": 4605,
+            "mean_us": 40.8427348534202
+          },
+          "L1 Rx processing": {
+            "calls": 13813,
+            "mean_us": 451.59471953956415
+          },
+          "UL segment deinterleaving": {
+            "calls": 9210,
+            "mean_us": 19.00150445168295
+          },
+          "UL segment rate recovery": {
+            "calls": 9210,
+            "mean_us": 33.61418545059718
+          },
+          "UL segments decoding": {
+            "calls": 9210,
+            "mean_us": 515.8308931596092
+          },
+          "UL LDPC llr2llrProcBuf": {
+            "calls": 9210,
+            "mean_us": 9.215136373507056
+          },
+          "UL LDPC llr2CnProcBuf": {
+            "calls": 9210,
+            "mean_us": 22.47712486427796
+          },
+          "UL LDPC cnProc": {
+            "calls": 27630,
+            "mean_us": 40.005129641693806
+          },
+          "UL LDPC bnProcPc": {
+            "calls": 27630,
+            "mean_us": 26.398420195439744
+          },
+          "UL LDPC cn2bnProcBuf": {
+            "calls": 27630,
+            "mean_us": 25.63047296416938
+          },
+          "UL LDPC bn2cnProcBuf": {
+            "calls": 27630,
+            "mean_us": 24.37870162866449
+          },
+          "PUSCH channel estimation": {
+            "calls": 4604,
+            "mean_us": 376.5469789313641
+          },
+          "PUSCH channel-estimation antenna processing": {
+            "calls": 13812,
+            "mean_us": 83.1247893136403
+          },
+          "PUSCH channel measurement": {
+            "calls": 13812,
+            "mean_us": 35.82779517810599
+          },
+          "PUSCH initialization": {
+            "calls": 4604,
+            "mean_us": 25.424406820156385
+          },
+          "PUSCH symbol processing": {
+            "calls": 4604,
+            "mean_us": 277.8877413119027
+          },
+          "PUSCH resource extraction": {
+            "calls": 59852,
+            "mean_us": 1.4563814074717636
+          },
+          "PUSCH channel compensation": {
+            "calls": 59852,
+            "mean_us": 27.671105994787148
+          },
+          "PUSCH LLR computation": {
+            "calls": 59852,
+            "mean_us": 7.269135968722852
+          },
+          "UL Indication": {
+            "calls": 13814,
+            "mean_us": 6.421249312291877
+          },
+          "Slot Indication": {
+            "calls": 46045,
+            "mean_us": 19.277633141492018
+          },
+          "PUSCH inner-receiver": {
+            "calls": 4604,
+            "mean_us": 684.9237439183319
+          },
+          "Schedule Response": {
+            "calls": 46045,
+            "mean_us": 2.1486529699207297
+          },
+          "feprx": {
+            "calls": 13814,
+            "mean_us": 316.1395336615029
+          },
+          "feprx_task (3 symbols)": {
+            "calls": 13814,
+            "mean_us": 279.02133704937023
+          },
+          "symbol_dft (RX)": {
+            "calls": 13814,
+            "mean_us": 46.89541421746055
+          },
+          "feptx_copy/precoding (per port, half_slot)": {
+            "calls": 56790,
+            "mean_us": 8.849979239302693
+          },
+          "feptx_ofdm (per port, half_slot)": {
+            "calls": 36836,
+            "mean_us": 283.31456086437174
+          },
+          "feptx_total": {
+            "calls": 36836,
+            "mean_us": 337.22073406450215
+          },
+          "symbol_idft (TX)": {
+            "calls": 36836,
+            "mean_us": 43.427493538929305
+          }
+        },
+        "link_window": {
+          "dl_harq": {
+            "total_delta": 4608,
+            "error_delta": 0,
+            "start": {
+              "total": 2100,
+              "errors": 1
+            },
+            "end": {
+              "total": 6708,
+              "errors": 1
+            }
+          },
+          "ul_harq": {
+            "total_delta": 4608,
+            "error_delta": 0,
+            "start": {
+              "total": 2100,
+              "errors": 1
+            },
+            "end": {
+              "total": 6708,
+              "errors": 1
+            }
+          }
+        },
+        "gnb_error_deltas": {
+          "dlsch": 0,
+          "ulsch": 0
+        },
+        "cpu0_khz": "2200000",
+        "observed_ldpc_shapes": [
+          "\u001b[0m[RF_DL_LDPC_SHAPE] BG=1 Zc=224 segments=2 first_seg=0 K=4928"
+        ],
+        "codec_sha256": "5a622d65c0cc0fd88ae1955e1f90a749749e0796dd661b0e796e609dc672b902"
+      },
+      {
+        "profile": "z224",
+        "mean_us": 253.9881343958647,
+        "window_calls": 4643,
+        "window_seconds": 30.664539341116324,
+        "window_timers": {
+          "L1 Tx processing": {
+            "calls": 46431,
+            "mean_us": 640.5657526652452
+          },
+          "DCI generation": {
+            "calls": 9286,
+            "mean_us": 17.86931811328883
+          },
+          "RX phase compensation": {
+            "calls": 37145,
+            "mean_us": 269.4416960021537
+          },
+          "DLSCH encoding": {
+            "calls": 4643,
+            "mean_us": 253.9881343958647
+          },
+          "DLSCH segmentation": {
+            "calls": 4643,
+            "mean_us": 9.173086366573335
+          },
+          "LDPC enc input": {
+            "calls": 4643,
+            "mean_us": 14.919425802283007
+          },
+          "LDPC enc parity": {
+            "calls": 4643,
+            "mean_us": 154.58728602196854
+          },
+          "LDPC enc output": {
+            "calls": 4643,
+            "mean_us": 3.9892235623519277
+          },
+          "DLSCH rate matching": {
+            "calls": 4643,
+            "mean_us": 2.784073228516046
+          },
+          "DLSCH interleaving": {
+            "calls": 4643,
+            "mean_us": 6.2721117811759655
+          },
+          "DLSCH scrambling": {
+            "calls": 4643,
+            "mean_us": 2.816440017230239
+          },
+          "DLSCH modulation": {
+            "calls": 4643,
+            "mean_us": 10.003288606504416
+          },
+          "DLSCH precoding": {
+            "calls": 4643,
+            "mean_us": 41.16147555459832
+          },
+          "L1 Rx processing": {
+            "calls": 13929,
+            "mean_us": 451.53522334697396
+          },
+          "UL segment deinterleaving": {
+            "calls": 9286,
+            "mean_us": 18.473631488261905
+          },
+          "UL segment rate recovery": {
+            "calls": 9286,
+            "mean_us": 30.0151962093474
+          },
+          "UL segments decoding": {
+            "calls": 9286,
+            "mean_us": 517.552667241008
+          },
+          "UL LDPC llr2llrProcBuf": {
+            "calls": 9286,
+            "mean_us": 9.110397587766531
+          },
+          "UL LDPC llr2CnProcBuf": {
+            "calls": 9286,
+            "mean_us": 22.417953262976518
+          },
+          "UL LDPC cnProc": {
+            "calls": 27858,
+            "mean_us": 40.47945013999569
+          },
+          "UL LDPC bnProcPc": {
+            "calls": 27858,
+            "mean_us": 26.30173982339005
+          },
+          "UL LDPC cn2bnProcBuf": {
+            "calls": 27858,
+            "mean_us": 26.3116056429033
+          },
+          "UL LDPC bn2cnProcBuf": {
+            "calls": 27858,
+            "mean_us": 24.30810467370235
+          },
+          "PUSCH channel estimation": {
+            "calls": 4643,
+            "mean_us": 376.2735128149903
+          },
+          "PUSCH channel-estimation antenna processing": {
+            "calls": 13929,
+            "mean_us": 83.14015291837175
+          },
+          "PUSCH channel measurement": {
+            "calls": 13929,
+            "mean_us": 35.718753607581306
+          },
+          "PUSCH initialization": {
+            "calls": 4643,
+            "mean_us": 25.511383372819296
+          },
+          "PUSCH symbol processing": {
+            "calls": 4643,
+            "mean_us": 279.4583820805514
+          },
+          "PUSCH resource extraction": {
+            "calls": 60359,
+            "mean_us": 1.4520611673486967
+          },
+          "PUSCH channel compensation": {
+            "calls": 60359,
+            "mean_us": 27.451930002153777
+          },
+          "PUSCH LLR computation": {
+            "calls": 60359,
+            "mean_us": 7.299537798836958
+          },
+          "UL Indication": {
+            "calls": 13929,
+            "mean_us": 6.179975231531338
+          },
+          "Slot Indication": {
+            "calls": 46431,
+            "mean_us": 19.390428377592556
+          },
+          "PUSCH inner-receiver": {
+            "calls": 4643,
+            "mean_us": 686.5757279776005
+          },
+          "Schedule Response": {
+            "calls": 46431,
+            "mean_us": 2.2309005621244427
+          },
+          "feprx": {
+            "calls": 13929,
+            "mean_us": 317.76576717639466
+          },
+          "feprx_task (3 symbols)": {
+            "calls": 13929,
+            "mean_us": 277.69002132242093
+          },
+          "symbol_dft (RX)": {
+            "calls": 13929,
+            "mean_us": 46.726591427956066
+          },
+          "feptx_copy/precoding (per port, half_slot)": {
+            "calls": 56796,
+            "mean_us": 9.030992252975562
+          },
+          "feptx_ofdm (per port, half_slot)": {
+            "calls": 37145,
+            "mean_us": 283.86770216718264
+          },
+          "feptx_total": {
+            "calls": 37145,
+            "mean_us": 338.01527061515685
+          },
+          "symbol_idft (TX)": {
+            "calls": 37145,
+            "mean_us": 43.80481303001749
+          }
+        },
+        "link_window": {
+          "dl_harq": {
+            "total_delta": 4608,
+            "error_delta": 0,
+            "start": {
+              "total": 2108,
+              "errors": 1
+            },
+            "end": {
+              "total": 6716,
+              "errors": 1
+            }
+          },
+          "ul_harq": {
+            "total_delta": 4608,
+            "error_delta": 0,
+            "start": {
+              "total": 2108,
+              "errors": 1
+            },
+            "end": {
+              "total": 6716,
+              "errors": 1
+            }
+          }
+        },
+        "gnb_error_deltas": {
+          "dlsch": 0,
+          "ulsch": 0
+        },
+        "cpu0_khz": "2200000",
+        "observed_ldpc_shapes": [
+          "\u001b[0m[RF_DL_LDPC_SHAPE] BG=1 Zc=224 segments=2 first_seg=0 K=4928"
+        ],
+        "codec_sha256": "c9a0f5f7a24f59bff8ad510c00f3fa9a195f06ca62955661b72321a83e53a9df"
+      }
+    ],
+    "added_z224_gain_percent": 20.599912861384517,
+    "combined_gain_percent": 28.52815138184096,
+    "hardware_cycles_collected": false
+  },
+  "limits": "Independent full codec overlays and original RFsim main programs. Not a fresh full OAI build, cross-platform performance result, or live-radio acceptance. No production installation."
+}

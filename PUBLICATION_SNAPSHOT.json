@@ -12,9 +12,9 @@
   ],
   "source_files": 4438,
   "source_bytes": 104236505,
-  "verified_files": 4449,
+  "verified_files": 4456,
   "content_digest_algorithm": "SHA256(sorted(path + NUL + canonical Git blob SHA1 + LF)); Git text normalization applies",
-  "content_sha256": "10c78fbf49ba2c87f9d4de8664198243f8f92309d353b2907468d17ea02a739d",
+  "content_sha256": "b1ae73d682fa596f2406105c7371116686e3e9a0df1ce625c646f4a20d4feada",
   "digest_exclusions": [
     ".gitignore",
     "PUBLICATION_SNAPSHOT.json",
@@ -29,7 +29,7 @@
     "untracked .orig backup files",
     "external benchmark/LDPC instruction experiment directories"
   ],
-  "validation": "Source publication and documented independent native/integration checks; output-packer update not a full fresh OAI build or RFsim/live-radio acceptance",
+  "validation": "Documented native/integration checks and legacy-MCS9 RFsim regression for new Z224 parity plus existing output packing; not a fresh full OAI build or live-radio acceptance",
   "license": "Preserve root Apache-2.0 and component-specific notices including OAI LICENSE; see existing component documentation",
   "baseline_source_files": 4438,
   "updates": [
@@ -75,6 +75,30 @@
       "tests": "96768 native function comparisons; enabled/disabled segment TU compile; 3 seeds x100 formal TBs for enabled, disabled and profiled modes; byte-for-byte production reference in profiled mode",
       "production_deployment": "not performed",
       "rfsim_regression": "not performed for new output packer"
+    },
+    {
+      "date": "2026-10-30",
+      "kind": "integrated_ldpc_bg1_z224_rvv",
+      "source_base_commit": "c733e26846af871a56f13cc0ab7c5546db1b5711",
+      "files": [
+        "vendor/openairinterface5g/openair1/PHY/CODING/nrLDPC_encoder/ldpc_encode_parity_check.c",
+        "vendor/openairinterface5g/openair1/PHY/CODING/nrLDPC_encoder/ldpc_bg1_z224_rvv.h",
+        "tests/ldpc_z224_rvv_correctness.c",
+        "tests/test_ldpc_z224_rvv_tables.py",
+        "scripts/check-ldpc-z224-rvv.py",
+        "docs/LDPC_BG1_Z224_RVV_OPTIMIZATION.md",
+        "docs/benchmarks/ldpc-bg1-z224-rvv-20261030.json",
+        "docs/benchmarks/ldpc-bg1-z224-integration-20261030.json",
+        "README.md",
+        "docs/LDPC_RVV_OPTIMIZATION.md",
+        "docs/OUTPUT_PACK_RVV_OPTIMIZATION.md",
+        "docs/K3_SNAPSHOT_20261029.md",
+        "PUBLICATION_SNAPSHOT.json"
+      ],
+      "enabled_when": "RISC-V RVV, non-AVX2/non-AVX512 original 128-bit layout, BG1/Zc224; independent opt-out macro",
+      "tests": "4 table/guard tests; 68 native expanded matrices; 900 formal full-TB bytewise comparisons; opt-out preprocessing; MCS9 RFsim three-profile comparison",
+      "production_deployment": "not performed",
+      "rfsim_regression": "passed legacy 50RB/DL MCS9/UL MCS14 configuration; no error growth in formal windows"
     }
   ],
   "oai_baseline_comparison": {
@@ -90,9 +114,10 @@
       "nrLDPC_encoder/ldpc_encode_parity_check.c",
       "nrLDPC_encoder/ldpc_bg1_z384_rvv.h",
       "nrLDPC_coding/nrLDPC_coding_segment/nrLDPC_coding_segment_encoder.c",
-      "nrLDPC_coding/nrLDPC_coding_segment/write_task_output_rvv.h"
+      "nrLDPC_coding/nrLDPC_coding_segment/write_task_output_rvv.h",
+      "nrLDPC_encoder/ldpc_bg1_z224_rvv.h"
     ],
     "note": "Original K3 .work source comparison applies to the baseline before this documented update"
   },
-  "published_tracked_files": 4454
+  "published_tracked_files": 4461
 }

@@ -1,0 +1,130 @@
+{
+  "validation_date": "2026-10-30",
+  "source_base_commit": "c733e26846af871a56f13cc0ab7c5546db1b5711",
+  "tests": {
+    "native_expanded_matrices": 68,
+    "native_output_bytes_each": 10304,
+    "full_tb_bytewise_formal": 900,
+    "python_checks": 4
+  },
+  "full_tb_cases": [
+    {
+      "rb": 50,
+      "mcs": 9,
+      "symbols": 12,
+      "seed": 20261022,
+      "formal_tbs": 100,
+      "comparison": "all coded output bytes against original production encoder",
+      "shapes": [
+        "BG=1 Zc=224 segments=2 first_seg=0 K=4928"
+      ]
+    },
+    {
+      "rb": 50,
+      "mcs": 9,
+      "symbols": 12,
+      "seed": 42,
+      "formal_tbs": 100,
+      "comparison": "all coded output bytes against original production encoder",
+      "shapes": [
+        "BG=1 Zc=224 segments=2 first_seg=0 K=4928"
+      ]
+    },
+    {
+      "rb": 50,
+      "mcs": 9,
+      "symbols": 12,
+      "seed": 0,
+      "formal_tbs": 100,
+      "comparison": "all coded output bytes against original production encoder",
+      "shapes": [
+        "BG=1 Zc=224 segments=2 first_seg=0 K=4928"
+      ]
+    },
+    {
+      "rb": 50,
+      "mcs": 14,
+      "symbols": 13,
+      "seed": 20261022,
+      "formal_tbs": 100,
+      "comparison": "all coded output bytes against original production encoder",
+      "shapes": [
+        "BG=1 Zc=384 segments=2 first_seg=0 K=8448"
+      ]
+    },
+    {
+      "rb": 50,
+      "mcs": 14,
+      "symbols": 13,
+      "seed": 42,
+      "formal_tbs": 100,
+      "comparison": "all coded output bytes against original production encoder",
+      "shapes": [
+        "BG=1 Zc=384 segments=2 first_seg=0 K=8448"
+      ]
+    },
+    {
+      "rb": 50,
+      "mcs": 14,
+      "symbols": 13,
+      "seed": 0,
+      "formal_tbs": 100,
+      "comparison": "all coded output bytes against original production encoder",
+      "shapes": [
+        "BG=1 Zc=384 segments=2 first_seg=0 K=8448"
+      ]
+    },
+    {
+      "rb": 50,
+      "mcs": 9,
+      "symbols": 13,
+      "seed": 42,
+      "formal_tbs": 100,
+      "comparison": "all coded output bytes against original production encoder",
+      "shapes": [
+        "BG=1 Zc=240 segments=2 first_seg=0 K=5280"
+      ]
+    },
+    {
+      "rb": 6,
+      "mcs": 4,
+      "symbols": 13,
+      "seed": 42,
+      "formal_tbs": 100,
+      "comparison": "all coded output bytes against original production encoder",
+      "shapes": [
+        "BG=2 Zc=64 segments=1 first_seg=0 K=640"
+      ]
+    },
+    {
+      "rb": 106,
+      "mcs": 28,
+      "symbols": 13,
+      "seed": 42,
+      "formal_tbs": 100,
+      "comparison": "all coded output bytes against original production encoder",
+      "shapes": [
+        "BG=1 Zc=384 segments=11 first_seg=0 K=8448"
+      ]
+    }
+  ],
+  "sources": {
+    "ldpc_encode_parity_check.c": {
+      "file_sha256": "31bc060d5adb843c42ce7996d1ef323c1437dfd0b1bd049f56481f281a16171a",
+      "canonical_text_sha256": "31bc060d5adb843c42ce7996d1ef323c1437dfd0b1bd049f56481f281a16171a",
+      "compiled_source_file_sha256": "24650629fb69923d1df19cf55c50e3e03ed94992b5a05f6d79f0cad9cc2440c4"
+    },
+    "ldpc_bg1_z224_rvv.h": {
+      "file_sha256": "5ad5ae8d70d9733dc94f2709ed974e2e20855d37234590212e80aec6080082f3",
+      "canonical_text_sha256": "5ad5ae8d70d9733dc94f2709ed974e2e20855d37234590212e80aec6080082f3",
+      "compiled_source_file_sha256": "11cb7f1d268b72d00b33570bd807cf4b5e2db67fa17452007701a4d2da947261"
+    }
+  },
+  "review_patch_sha256": "e0b6c29e6112fd5f965cf06b3217c50f03334ee00806883b7a0ad24d047b085f",
+  "source_comparison": "Published LF files equal actual compiled CRLF files after line-ending normalization; no source token changes",
+  "build": "Integrated full encoder TU built with existing XSAI ABI; complete codec linked retaining original decoder and existing output packing object",
+  "opt_out": "Z224-disable preprocessing removes new Z224 dispatch and retains Z384 optimization",
+  "production_source_and_binaries": "unchanged",
+  "rfsim_services": "stopped",
+  "limits": "Native/table/whole-TB equivalence checks and MCS9 RFsim passed; no independent standard-vector certification, fresh full OAI build, other-architecture performance, or live-radio acceptance"
+}

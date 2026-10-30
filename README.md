@@ -2,7 +2,7 @@
 
 > **2026-10-29 K3 源码快照**：当前目录和 vendor 源码核对、包含/排除内容及克隆方法见 [快照说明](docs/K3_SNAPSHOT_20261029.md)。快照保留本地未提交的源码改动；下方历史实验记录不代表本次重新完成验证。
 
-**新增：** 已集成 [K3 X100 LDPC RVV 指令优化](docs/LDPC_RVV_OPTIMIZATION.md)，RISC-V/RVV 的 BG1、Zc384 配置自动选择新内核；提供原版对照开关和正确性检查。
+**新增：** 已集成 [K3 X100 LDPC RVV 指令优化](docs/LDPC_RVV_OPTIMIZATION.md)，RISC-V/RVV 的 BG1/Zc384 以及 [BG1/Zc224](docs/LDPC_BG1_Z224_RVV_OPTIMIZATION.md) 配置自动选择对应新内核；提供独立原版对照开关和正确性检查。
 
 基于 Sionna Research Kit 与 OpenAirInterface (OAI) 的 5G NR 实验项目，重点是把真实空口 gNB、5G 核心网和 AI 物理层插件运行在进迭时空 K3 上，并研究 X100/A100 异构调度与物理层耗时。本仓库为 `feeasolfnj/XSAI_AIRAN`；本次源码快照取自 K3 的 `/home/ubuntu/XSAI_AIRAN`。旧文档中的 `/home/ubuntu/sionna-rk` 属于历史部署路径。
 
@@ -76,3 +76,9 @@ Sionna-RK、OAI 及各第三方组件保留原有版权和许可；参见根目�
 在已有 LDPC 校验内核优化之上，新增原生 RVV 输出打包。K3 X100 单线程50RB/MCS14对照中，输出打包73.481→4.450μs，完整编码235.212→164.532μs。两组均包含上一轮校验优化。
 
 接入范围、独立原版对照测试、禁用开关与测量限制见[输出打包优化说明](docs/OUTPUT_PACK_RVV_OPTIMIZATION.md)。源码更新不自动替换现有部署。
+
+## 2026-10-30：BG1/Zc224 校验计算 RVV 优化
+
+将64字节批量校验计算扩展至BG1/Zc224，保留已有Zc384和输出打包优化。旧条件RFsim（50RB、下行MCS9）本轮完整编码355.368→319.884→253.988μs，分别对应原版、已有优化、新增Zc224后的版本；新增优化再降20.60%，相对原版累计降28.53%。
+
+源码范围、构建/检查命令、900正式TB逐字节验证及benchmark/RFsim条件见[Zc224优化说明](docs/LDPC_BG1_Z224_RVV_OPTIMIZATION.md)。更新源码不会自动替换已有生产库。

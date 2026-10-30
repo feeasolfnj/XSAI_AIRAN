@@ -47,6 +47,15 @@
 
 
 
+
+/* Zc224 uses its own operand table; the Zc384 fast path remains unchanged. */
+#if defined(__riscv_vector) && !defined(__AVX2__) && !defined(__AVX512F__) && !defined(XSAI_LDPC_DISABLE_RVV_BG1_Z224)
+#include "ldpc_bg1_z224_rvv.h"
+#define XSAI_USE_LDPC_BG1_Z224_RVV 1
+#else
+#define XSAI_USE_LDPC_BG1_Z224_RVV 0
+#endif
+
 #ifdef __AVX512F__
 #include "ldpc384_simd512_byte.c"
 #else
@@ -121,7 +130,11 @@ static void encode_parity_check_part_optim(uint8_t *cc, uint8_t *d, short BG,sho
         ldpc208_byte(c, d);
         break;
       case 224:
+#if XSAI_USE_LDPC_BG1_Z224_RVV
+        xsai_ldpc_bg1_z224_rvv(c, d);
+#else
         ldpc224_byte(c, d);
+#endif
         break;
       case 240:
         ldpc240_byte(c, d);
