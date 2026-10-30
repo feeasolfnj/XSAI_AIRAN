@@ -12,9 +12,9 @@
   ],
   "source_files": 4438,
   "source_bytes": 104236505,
-  "verified_files": 4443,
+  "verified_files": 4449,
   "content_digest_algorithm": "SHA256(sorted(path + NUL + canonical Git blob SHA1 + LF)); Git text normalization applies",
-  "content_sha256": "5d6039eb680906b569202eab2c67983ca7d2ef136e4e14246739dd514e185246",
+  "content_sha256": "10c78fbf49ba2c87f9d4de8664198243f8f92309d353b2907468d17ea02a739d",
   "digest_exclusions": [
     ".gitignore",
     "PUBLICATION_SNAPSHOT.json",
@@ -29,7 +29,7 @@
     "untracked .orig backup files",
     "external benchmark/LDPC instruction experiment directories"
   ],
-  "validation": "Source publication plus independent modified encoder TU and callback checks; not a full fresh OAI build or RFsim/live-radio validation",
+  "validation": "Source publication and documented independent native/integration checks; output-packer update not a full fresh OAI build or RFsim/live-radio acceptance",
   "license": "Preserve root Apache-2.0 and component-specific notices including OAI LICENSE; see existing component documentation",
   "baseline_source_files": 4438,
   "updates": [
@@ -53,6 +53,28 @@
       "enabled_when": "RISC-V RVV, original 128-bit layout, BG1/Zc384; opt-out macro available",
       "tests": "2 table/guard tests; 16 native random matrices; 900 formal full-TB original-output comparisons; disable macro preprocessing",
       "production_deployment": "not performed"
+    },
+    {
+      "date": "2026-10-30",
+      "kind": "rvv_output_bit_packing",
+      "source_base_commit": "7590b922aae18c198ab8eb0639bc0e2f2d4ff6bc",
+      "files": [
+        "vendor/openairinterface5g/openair1/PHY/CODING/nrLDPC_coding/nrLDPC_coding_segment/nrLDPC_coding_segment_encoder.c",
+        "vendor/openairinterface5g/openair1/PHY/CODING/nrLDPC_coding/nrLDPC_coding_segment/write_task_output_rvv.h",
+        "tests/output_pack_rvv_correctness.c",
+        "scripts/check-output-pack-rvv.py",
+        "docs/OUTPUT_PACK_RVV_OPTIMIZATION.md",
+        "docs/benchmarks/output-pack-rvv-20261030.json",
+        "docs/benchmarks/output-pack-rvv-integration-20261030.json",
+        "README.md",
+        "docs/LDPC_RVV_OPTIMIZATION.md",
+        "docs/K3_SNAPSHOT_20261029.md",
+        "PUBLICATION_SNAPSHOT.json"
+      ],
+      "enabled_when": "RISC-V RVV; XSAI_LDPC_DISABLE_RVV_OUTPUT_PACK selects retained scalar fallback",
+      "tests": "96768 native function comparisons; enabled/disabled segment TU compile; 3 seeds x100 formal TBs for enabled, disabled and profiled modes; byte-for-byte production reference in profiled mode",
+      "production_deployment": "not performed",
+      "rfsim_regression": "not performed for new output packer"
     }
   ],
   "oai_baseline_comparison": {
@@ -66,8 +88,11 @@
     "published_path": "vendor/openairinterface5g",
     "changes_since_baseline": [
       "nrLDPC_encoder/ldpc_encode_parity_check.c",
-      "nrLDPC_encoder/ldpc_bg1_z384_rvv.h"
+      "nrLDPC_encoder/ldpc_bg1_z384_rvv.h",
+      "nrLDPC_coding/nrLDPC_coding_segment/nrLDPC_coding_segment_encoder.c",
+      "nrLDPC_coding/nrLDPC_coding_segment/write_task_output_rvv.h"
     ],
     "note": "Original K3 .work source comparison applies to the baseline before this documented update"
-  }
+  },
+  "published_tracked_files": 4454
 }

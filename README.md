@@ -70,3 +70,9 @@ Windows/Quectel UE ⇄ 5G 空口 ⇄ B210 ⇄ K3 gNB (OAI)
 ## 来源与许可
 
 Sionna-RK、OAI 及各第三方组件保留原有版权和许可；参见根目录 [`LICENSE`](LICENSE)、[`README.upstream.md`](README.upstream.md) 以及 vendor 内的许可证。本项目的 K3 实验代码与文档不改变上游许可。接收机权重由我们在 Spark 上训练，解调器权重由 NVIDIA Sionna-RK 的开源检查点转换；来源、验证边界和散列值见各插件 README。分发解调器权重时保留上游署名和 Apache-2.0 许可说明。
+
+## 2026-10-30：输出打包 RVV 优化
+
+在已有 LDPC 校验内核优化之上，新增原生 RVV 输出打包。K3 X100 单线程50RB/MCS14对照中，输出打包73.481→4.450μs，完整编码235.212→164.532μs。两组均包含上一轮校验优化。
+
+接入范围、独立原版对照测试、禁用开关与测量限制见[输出打包优化说明](docs/OUTPUT_PACK_RVV_OPTIMIZATION.md)。源码更新不自动替换现有部署。

@@ -1,0 +1,78 @@
+{
+  "validation_date": "2026-10-30",
+  "base_commit": "7590b922aae18c198ab8eb0639bc0e2f2d4ff6bc",
+  "native_test": "PASS cases=96768 original_scalar_byte_for_byte=passed output_guards=passed input_guard_pages=passed initial_output=zero,ones,random",
+  "existing_ldpc_table_tests": 2,
+  "segment_TU_compilation": [
+    "RVV enabled",
+    "opt-out scalar fallback"
+  ],
+  "full_tb_cases": [
+    {
+      "mode": "enabled",
+      "seed": 20261022,
+      "formal_tbs": 100,
+      "status": "passed",
+      "verification": "stable encoded hash plus downstream PDSCH check"
+    },
+    {
+      "mode": "enabled",
+      "seed": 42,
+      "formal_tbs": 100,
+      "status": "passed",
+      "verification": "stable encoded hash plus downstream PDSCH check"
+    },
+    {
+      "mode": "enabled",
+      "seed": 0,
+      "formal_tbs": 100,
+      "status": "passed",
+      "verification": "stable encoded hash plus downstream PDSCH check"
+    },
+    {
+      "mode": "disabled",
+      "seed": 20261022,
+      "formal_tbs": 100,
+      "status": "passed",
+      "verification": "stable encoded hash plus downstream PDSCH check"
+    },
+    {
+      "mode": "disabled",
+      "seed": 42,
+      "formal_tbs": 100,
+      "status": "passed",
+      "verification": "stable encoded hash plus downstream PDSCH check"
+    },
+    {
+      "mode": "disabled",
+      "seed": 0,
+      "formal_tbs": 100,
+      "status": "passed",
+      "verification": "stable encoded hash plus downstream PDSCH check"
+    },
+    {
+      "mode": "profile",
+      "seed": 20261022,
+      "formal_tbs": 100,
+      "status": "passed",
+      "verification": "original production encoder byte-for-byte outside timing"
+    },
+    {
+      "mode": "profile",
+      "seed": 42,
+      "formal_tbs": 100,
+      "status": "passed",
+      "verification": "original production encoder byte-for-byte outside timing"
+    },
+    {
+      "mode": "profile",
+      "seed": 0,
+      "formal_tbs": 100,
+      "status": "passed",
+      "verification": "original production encoder byte-for-byte outside timing"
+    }
+  ],
+  "enabled_disabled_profiled_hashes": "match per seed",
+  "production_source_and_binaries": "unchanged",
+  "limits": "Segment TU compiled using existing compatible XSAI ABI and linked with existing codec objects. Not a fresh full OAI build, RFsim/live-radio regression, or cross-architecture native validation."
+}

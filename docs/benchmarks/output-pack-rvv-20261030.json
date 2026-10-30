@@ -1,0 +1,72 @@
+{
+  "conditions": {
+    "cpu": "X100 CPU0",
+    "frequency_khz": "2200000",
+    "rb": 50,
+    "carrier_rb": 106,
+    "mcs": 14,
+    "symbols": 13,
+    "codeblocks": 2,
+    "seeds": [
+      20261022,
+      42,
+      0
+    ],
+    "warmup": 10,
+    "formal_per_seed": 200
+  },
+  "summary": [
+    {
+      "variant": "baseline",
+      "formal_whole_tbs": 600,
+      "formal_profiled_tbs": 600,
+      "mean_us": 235.2117336,
+      "cycles_per_tb": 511097.6566666667,
+      "average_cores": 0.9965277372823491,
+      "stages_us": {
+        "wall_us": 235.344110995,
+        "crc_and_payload_copy_us": 7.519936666666666,
+        "segmentation_and_cb_crc_us": 7.579733333333333,
+        "ldpc_encode_us": 133.37777166666666,
+        "rate_matching_us": 1.40792,
+        "interleaving_us": 8.082158333333334,
+        "output_packing_us": 73.481475,
+        "ldpc_input_us": 22.432166666666667,
+        "ldpc_prepare_us": 0.19355666666666665,
+        "ldpc_parity_us": 107.30173,
+        "other_us": 3.895115995
+      }
+    },
+    {
+      "variant": "rvv_pack",
+      "formal_whole_tbs": 600,
+      "formal_profiled_tbs": 600,
+      "mean_us": 164.53174680833334,
+      "cycles_per_tb": 361532.39666666667,
+      "average_cores": 1.0058198384824915,
+      "stages_us": {
+        "wall_us": 166.65582428,
+        "crc_and_payload_copy_us": 7.456698333333334,
+        "segmentation_and_cb_crc_us": 7.5311683333333335,
+        "ldpc_encode_us": 133.266085,
+        "rate_matching_us": 1.4402766666666666,
+        "interleaving_us": 8.719756666666667,
+        "output_packing_us": 4.450403333333333,
+        "ldpc_input_us": 22.35118,
+        "ldpc_prepare_us": 0.19178333333333333,
+        "ldpc_parity_us": 107.29555166666667,
+        "other_us": 3.7914359466666667
+      }
+    }
+  ],
+  "scope": "Only output packing changed; both variants retain the previously optimized BG1/Z384 parity kernel",
+  "validation": "96768 direct function tests; each stage-profiled TB compared byte-for-byte against original production encoder outside timing; full-codec benchmark PDSCH checks passed; hashes match baseline/new per seed",
+  "deployment": "No automatic production installation",
+  "gains": {
+    "whole_time_reduction_percent": 30.04951568949563,
+    "packing_time_reduction_percent": 93.94350299400858,
+    "cycle_reduction_percent": 29.2635385917148
+  },
+  "measurement_date": "2026-10-30",
+  "measurement_kind": "historical candidate benchmark, prior to repository release integration"
+}

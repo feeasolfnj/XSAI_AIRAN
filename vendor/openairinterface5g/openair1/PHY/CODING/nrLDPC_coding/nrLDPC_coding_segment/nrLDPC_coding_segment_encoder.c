@@ -41,6 +41,10 @@
 
 #include <syscall.h>
 
+#if defined(__riscv_vector) && !defined(XSAI_LDPC_DISABLE_RVV_OUTPUT_PACK)
+#include "write_task_output_rvv.h"
+#endif
+
 #define DEBUG_LDPC_ENCODING
 //#define DEBUG_LDPC_ENCODING_FREE 1
 
@@ -158,6 +162,10 @@ static void write_task_output(uint8_t *f,
   }
        
 #elif defined(__riscv)
+#if defined(__riscv_vector) && !defined(XSAI_LDPC_DISABLE_RVV_OUTPUT_PACK)
+  xsai_write_task_output_rvv(f, E, f2, E2, E2_first_segment, nb_segments, output, Eoffset);
+#else
+
   // Portable scalar fallback. Each input byte contains one bit from up to
   // eight segments; write each segment contiguously into the packed output.
   uint32_t segment_offset = Eoffset;
@@ -172,6 +180,8 @@ static void write_task_output(uint8_t *f,
     }
     segment_offset += segment_bits;
   }
+
+#endif
 
 #else
   uint32_t *output_p = (uint32_t*)output;
