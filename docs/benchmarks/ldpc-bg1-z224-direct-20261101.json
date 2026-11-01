@@ -1,0 +1,113 @@
+{
+  "measurement_date": "2026-11-01",
+  "source_base_commit": "87a0b50863277aec31a9e3fc93750edc7307414e",
+  "conditions": {
+    "cpu": 0,
+    "frequency_khz": 2200000,
+    "mcs": 9,
+    "rb": 50,
+    "carrier_rb": 106,
+    "symbols": 13,
+    "dmrs_count": 1,
+    "dmrs_groups": 2,
+    "tbslbrm": 184424,
+    "payload_bits": 9480,
+    "coded_bits": 14400,
+    "bg": 1,
+    "zc": 224,
+    "codeblocks": 2
+  },
+  "protocol": {
+    "seeds": [
+      20261022,
+      42,
+      0
+    ],
+    "warmup_tbs_per_seed": 10,
+    "formal_tbs_per_seed": 200,
+    "formal_tbs_per_variant": 600,
+    "input": "one seeded random valid payload per process, repeated across trials",
+    "cache": "warm steady-state",
+    "ordering": "historical candidate/release alternated by seed",
+    "wall_scope": "complete nr_dlsch_encoding call, output checks outside measured window",
+    "cycles": "perf_event_open user-space hardware CPU cycles, no frequency conversion, instrumentation not subtracted"
+  },
+  "publication_source_retest": {
+    "published_source": {
+      "formal_tbs": 600,
+      "mean_us": 37.714317408333336,
+      "cycles_per_tb": 84067.61166666666
+    },
+    "historical_candidate": {
+      "formal_tbs": 600,
+      "mean_us": 38.098749525,
+      "cycles_per_tb": 84304.65166666667
+    }
+  },
+  "historical_20261031": {
+    "candidate": {
+      "formal_tbs": 600,
+      "mean_us": 38.82410002666666,
+      "cycles_per_tb": 84766.95333333334,
+      "library_sha256": "75c4fac3578f10b20e7b3b25df8bac955649ef53a2444462c193120a4b7e8d8d"
+    },
+    "original": {
+      "mean_us": 171.25490159,
+      "cycles_per_tb": 372256.18166666664,
+      "formal_tbs": 600
+    },
+    "note": "Historical measurements are not the 2026-11-01 publication-source rerun or same-round original baseline"
+  },
+  "rfsim": {
+    "measurement_date": "2026-11-01",
+    "mean_us": 111.73754517744393,
+    "formal_encoding_calls": 4593,
+    "window_seconds": 30.679717740043998,
+    "timer_scope": "original start_meas before nr_dlsch_encoding through stop_meas after its return in nr_generate_pdsch",
+    "cpu_policy": "gNB and UE use allowed X100 CPU0-7, no single-core claim",
+    "frequency_khz": 2200000,
+    "dl_mcs": 9,
+    "dl_rb": 50,
+    "ul_mcs": 14,
+    "ul_rb": 50,
+    "carrier_rb": 106,
+    "band": 78,
+    "numerology": 1,
+    "config_sha256": "435ac9e5f40651ad0a8ef4cfbd5832b5407297e4db336e707652d11ec5724f1d",
+    "observed_shapes": [
+      "\u001b[0m[RF_DL_LDPC_SHAPE] BG=1 Zc=224 segments=2 first_seg=0 K=4928"
+    ],
+    "link_window": {
+      "dl_harq": {
+        "total_delta": 4608,
+        "error_delta": 0,
+        "start": {
+          "total": 2345,
+          "errors": 0
+        },
+        "end": {
+          "total": 6953,
+          "errors": 0
+        }
+      },
+      "ul_harq": {
+        "total_delta": 4608,
+        "error_delta": 0,
+        "start": {
+          "total": 2345,
+          "errors": 0
+        },
+        "end": {
+          "total": 6953,
+          "errors": 0
+        }
+      }
+    },
+    "gnb_error_deltas": {
+      "dlsch": 0,
+      "ulsch": 0
+    },
+    "hardware_cycles_collected": false
+  },
+  "limits": "Independent full-codec overlays using existing compatible XSAI ABI. Not a fresh full OAI dependency/build install, all-platform performance claim, or live-radio acceptance. Production not installed."
+}

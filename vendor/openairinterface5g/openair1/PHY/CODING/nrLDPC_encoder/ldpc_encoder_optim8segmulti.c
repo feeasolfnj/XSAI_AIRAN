@@ -43,8 +43,23 @@
 #include "ldpc_encode_parity_check.c"
 #include "ldpc_generate_coefficient.c"
 
+/* The original encoder below remains the fallback for every other target,
+ * shape, or explicit opt-out. Keep the prior Z224/Z384 and output-pack knobs. */
+#if XSAI_USE_LDPC_BG1_Z224_RVV && !defined(XSAI_LDPC_DISABLE_RVV_BG1_Z224_DIRECT)
+#include "ldpc_bg1_z224_encoder_rvv.h"
+#define XSAI_USE_LDPC_BG1_Z224_DIRECT_RVV 1
+#else
+#define XSAI_USE_LDPC_BG1_Z224_DIRECT_RVV 0
+#endif
+
+
 int LDPCencoder(uint8_t **input, uint8_t *output, encoder_implemparams_t *impp)
 {
+#if XSAI_USE_LDPC_BG1_Z224_DIRECT_RVV
+  if (xsai_ldpc_bg1_z224_can_encode(impp))
+    return xsai_ldpc_bg1_z224_encode_rvv(input, output, impp);
+#endif
+
   //set_log(PHY, 4);
 
   int Zc = impp->Zc;

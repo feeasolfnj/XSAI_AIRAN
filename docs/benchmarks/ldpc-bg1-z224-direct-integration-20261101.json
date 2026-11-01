@@ -1,0 +1,450 @@
+{
+  "validation_date": "2026-11-01",
+  "source_base_commit": "87a0b50863277aec31a9e3fc93750edc7307414e",
+  "base_tree": "9318594173b647accda5875172d22b96d07f7dd4",
+  "sources": {
+    "vendor/openairinterface5g/openair1/PHY/CODING/nrLDPC_encoder/ldpc_encoder_optim8segmulti.c": "bf77a44d43678d58b5d1669cabd33cf642789b3e91791e3ba352919f5c4fbc2e",
+    "vendor/openairinterface5g/openair1/PHY/CODING/nrLDPC_encoder/ldpc_input_z224_rvv.h": "43baf9a1007a4829f2338d2e7f4c756d2cc736f4976cfef16c872bf55158fd94",
+    "vendor/openairinterface5g/openair1/PHY/CODING/nrLDPC_encoder/ldpc_bg1_z224_direct_rvv.h": "8170acbcf94c63d76c4a9eb55084d99e14f17199eaf8d16bb1f93432c1e8cfc4",
+    "vendor/openairinterface5g/openair1/PHY/CODING/nrLDPC_encoder/ldpc_bg1_z224_encoder_rvv.h": "7c55a31b912ea7c85d85de980097a2a8fbd91706bfcb0046079b0e06b11e5f91"
+  },
+  "native_tests": [
+    "PASS: 1088 input expansion cases, original bit-plane mapping, read-only input and end guards",
+    "PASS: Zc224, 68 base matrices: direct addressing equals all 16 shifted banks (4 structured + 64 random), 10304 bytes each match original; input read-only, output prefix canaries and end guard pages intact",
+    "PASS: 1088 complete Z224 encoder groups, 1..8 segments, first=0/8; 14784 bytes match retained OAI reference; guards, timers and eligibility checks passed"
+  ],
+  "python_tests": {
+    "total": 6,
+    "hosts": [
+      "Windows",
+      "K3 riscv64 Linux"
+    ],
+    "result": "passed"
+  },
+  "complete_tb_equivalence": {
+    "formal_tbs": 180,
+    "reference": "production LDPCencoder via isolated dlsym callback; compare every byte of each callback before rate matching; reference execution excluded from performance measurements",
+    "cases": [
+      {
+        "case": {
+          "tag": "current-z224",
+          "rb": 50,
+          "mcs": 9,
+          "symbols": 13,
+          "groups": 2,
+          "lbrm": 184424
+        },
+        "seed": 20261022,
+        "formal_tbs": 10,
+        "verification": "every LDPC encoder callback byte-for-byte versus production encoder",
+        "shapes": [
+          "[LDPC_VERIFIED_SHAPE] BG=1 Zc=224 K=4928 first=0 segments=2"
+        ],
+        "signature": [
+          "17371153086627207168",
+          "7336290966227180188",
+          "9480"
+        ]
+      },
+      {
+        "case": {
+          "tag": "current-z224",
+          "rb": 50,
+          "mcs": 9,
+          "symbols": 13,
+          "groups": 2,
+          "lbrm": 184424
+        },
+        "seed": 42,
+        "formal_tbs": 10,
+        "verification": "every LDPC encoder callback byte-for-byte versus production encoder",
+        "shapes": [
+          "[LDPC_VERIFIED_SHAPE] BG=1 Zc=224 K=4928 first=0 segments=2"
+        ],
+        "signature": [
+          "14327131277207368023",
+          "13168470467199216179",
+          "9480"
+        ]
+      },
+      {
+        "case": {
+          "tag": "current-z224",
+          "rb": 50,
+          "mcs": 9,
+          "symbols": 13,
+          "groups": 2,
+          "lbrm": 184424
+        },
+        "seed": 0,
+        "formal_tbs": 10,
+        "verification": "every LDPC encoder callback byte-for-byte versus production encoder",
+        "shapes": [
+          "[LDPC_VERIFIED_SHAPE] BG=1 Zc=224 K=4928 first=0 segments=2"
+        ],
+        "signature": [
+          "8979860557841101629",
+          "3368686925389138431",
+          "9480"
+        ]
+      },
+      {
+        "case": {
+          "tag": "single-cb",
+          "rb": 25,
+          "mcs": 9,
+          "symbols": 13,
+          "groups": 2,
+          "lbrm": 184424
+        },
+        "seed": 20261022,
+        "formal_tbs": 10,
+        "verification": "every LDPC encoder callback byte-for-byte versus production encoder",
+        "shapes": [
+          "[LDPC_VERIFIED_SHAPE] BG=1 Zc=224 K=4928 first=0 segments=1"
+        ],
+        "signature": [
+          "17661903509975198329",
+          "6228915576993673975",
+          "4736"
+        ]
+      },
+      {
+        "case": {
+          "tag": "single-cb",
+          "rb": 25,
+          "mcs": 9,
+          "symbols": 13,
+          "groups": 2,
+          "lbrm": 184424
+        },
+        "seed": 42,
+        "formal_tbs": 10,
+        "verification": "every LDPC encoder callback byte-for-byte versus production encoder",
+        "shapes": [
+          "[LDPC_VERIFIED_SHAPE] BG=1 Zc=224 K=4928 first=0 segments=1"
+        ],
+        "signature": [
+          "8631972730185962521",
+          "13206748138081055116",
+          "4736"
+        ]
+      },
+      {
+        "case": {
+          "tag": "single-cb",
+          "rb": 25,
+          "mcs": 9,
+          "symbols": 13,
+          "groups": 2,
+          "lbrm": 184424
+        },
+        "seed": 0,
+        "formal_tbs": 10,
+        "verification": "every LDPC encoder callback byte-for-byte versus production encoder",
+        "shapes": [
+          "[LDPC_VERIFIED_SHAPE] BG=1 Zc=224 K=4928 first=0 segments=1"
+        ],
+        "signature": [
+          "13430413090505328747",
+          "4044496280883431698",
+          "4736"
+        ]
+      },
+      {
+        "case": {
+          "tag": "legacy-z384",
+          "rb": 50,
+          "mcs": 14,
+          "symbols": 13,
+          "groups": 1,
+          "lbrm": 950984
+        },
+        "seed": 20261022,
+        "formal_tbs": 10,
+        "verification": "every LDPC encoder callback byte-for-byte versus production encoder",
+        "shapes": [
+          "[LDPC_VERIFIED_SHAPE] BG=1 Zc=384 K=8448 first=0 segments=2"
+        ],
+        "signature": [
+          "4577862148902927780",
+          "5836505670657202953",
+          "16136"
+        ]
+      },
+      {
+        "case": {
+          "tag": "legacy-z384",
+          "rb": 50,
+          "mcs": 14,
+          "symbols": 13,
+          "groups": 1,
+          "lbrm": 950984
+        },
+        "seed": 42,
+        "formal_tbs": 10,
+        "verification": "every LDPC encoder callback byte-for-byte versus production encoder",
+        "shapes": [
+          "[LDPC_VERIFIED_SHAPE] BG=1 Zc=384 K=8448 first=0 segments=2"
+        ],
+        "signature": [
+          "72667730560333984",
+          "18114232699567690272",
+          "16136"
+        ]
+      },
+      {
+        "case": {
+          "tag": "legacy-z384",
+          "rb": 50,
+          "mcs": 14,
+          "symbols": 13,
+          "groups": 1,
+          "lbrm": 950984
+        },
+        "seed": 0,
+        "formal_tbs": 10,
+        "verification": "every LDPC encoder callback byte-for-byte versus production encoder",
+        "shapes": [
+          "[LDPC_VERIFIED_SHAPE] BG=1 Zc=384 K=8448 first=0 segments=2"
+        ],
+        "signature": [
+          "9361321414320773576",
+          "479647173760057267",
+          "16136"
+        ]
+      },
+      {
+        "case": {
+          "tag": "z240-fallback",
+          "rb": 50,
+          "mcs": 9,
+          "symbols": 13,
+          "groups": 1,
+          "lbrm": 950984
+        },
+        "seed": 20261022,
+        "formal_tbs": 10,
+        "verification": "every LDPC encoder callback byte-for-byte versus production encoder",
+        "shapes": [
+          "[LDPC_VERIFIED_SHAPE] BG=1 Zc=240 K=5280 first=0 segments=2"
+        ],
+        "signature": [
+          "4278033556720729735",
+          "15088422024848920841",
+          "9992"
+        ]
+      },
+      {
+        "case": {
+          "tag": "z240-fallback",
+          "rb": 50,
+          "mcs": 9,
+          "symbols": 13,
+          "groups": 1,
+          "lbrm": 950984
+        },
+        "seed": 42,
+        "formal_tbs": 10,
+        "verification": "every LDPC encoder callback byte-for-byte versus production encoder",
+        "shapes": [
+          "[LDPC_VERIFIED_SHAPE] BG=1 Zc=240 K=5280 first=0 segments=2"
+        ],
+        "signature": [
+          "2917669682592488385",
+          "2254855982212847312",
+          "9992"
+        ]
+      },
+      {
+        "case": {
+          "tag": "z240-fallback",
+          "rb": 50,
+          "mcs": 9,
+          "symbols": 13,
+          "groups": 1,
+          "lbrm": 950984
+        },
+        "seed": 0,
+        "formal_tbs": 10,
+        "verification": "every LDPC encoder callback byte-for-byte versus production encoder",
+        "shapes": [
+          "[LDPC_VERIFIED_SHAPE] BG=1 Zc=240 K=5280 first=0 segments=2"
+        ],
+        "signature": [
+          "8325350085659841513",
+          "14091692501837129935",
+          "9992"
+        ]
+      },
+      {
+        "case": {
+          "tag": "bg2-fallback",
+          "rb": 6,
+          "mcs": 4,
+          "symbols": 13,
+          "groups": 1,
+          "lbrm": 950984
+        },
+        "seed": 20261022,
+        "formal_tbs": 10,
+        "verification": "every LDPC encoder callback byte-for-byte versus production encoder",
+        "shapes": [
+          "[LDPC_VERIFIED_SHAPE] BG=2 Zc=64 K=640 first=0 segments=1"
+        ],
+        "signature": [
+          "5901335360836972470",
+          "1792752667654328878",
+          "552"
+        ]
+      },
+      {
+        "case": {
+          "tag": "bg2-fallback",
+          "rb": 6,
+          "mcs": 4,
+          "symbols": 13,
+          "groups": 1,
+          "lbrm": 950984
+        },
+        "seed": 42,
+        "formal_tbs": 10,
+        "verification": "every LDPC encoder callback byte-for-byte versus production encoder",
+        "shapes": [
+          "[LDPC_VERIFIED_SHAPE] BG=2 Zc=64 K=640 first=0 segments=1"
+        ],
+        "signature": [
+          "5646635216709197657",
+          "6866349290578391495",
+          "552"
+        ]
+      },
+      {
+        "case": {
+          "tag": "bg2-fallback",
+          "rb": 6,
+          "mcs": 4,
+          "symbols": 13,
+          "groups": 1,
+          "lbrm": 950984
+        },
+        "seed": 0,
+        "formal_tbs": 10,
+        "verification": "every LDPC encoder callback byte-for-byte versus production encoder",
+        "shapes": [
+          "[LDPC_VERIFIED_SHAPE] BG=2 Zc=64 K=640 first=0 segments=1"
+        ],
+        "signature": [
+          "17741291478304518342",
+          "15537464464306259615",
+          "552"
+        ]
+      },
+      {
+        "case": {
+          "tag": "multi-group-fallback",
+          "rb": 106,
+          "mcs": 28,
+          "symbols": 13,
+          "groups": 1,
+          "lbrm": 950984
+        },
+        "seed": 20261022,
+        "formal_tbs": 10,
+        "verification": "every LDPC encoder callback byte-for-byte versus production encoder",
+        "shapes": [
+          "[LDPC_VERIFIED_SHAPE] BG=1 Zc=384 K=8448 first=0 segments=11",
+          "[LDPC_VERIFIED_SHAPE] BG=1 Zc=384 K=8448 first=8 segments=11"
+        ],
+        "signature": [
+          "2878056195446543224",
+          "10650417744953263372",
+          "88064"
+        ]
+      },
+      {
+        "case": {
+          "tag": "multi-group-fallback",
+          "rb": 106,
+          "mcs": 28,
+          "symbols": 13,
+          "groups": 1,
+          "lbrm": 950984
+        },
+        "seed": 42,
+        "formal_tbs": 10,
+        "verification": "every LDPC encoder callback byte-for-byte versus production encoder",
+        "shapes": [
+          "[LDPC_VERIFIED_SHAPE] BG=1 Zc=384 K=8448 first=0 segments=11",
+          "[LDPC_VERIFIED_SHAPE] BG=1 Zc=384 K=8448 first=8 segments=11"
+        ],
+        "signature": [
+          "2836514029623334997",
+          "6437947071217885971",
+          "88064"
+        ]
+      },
+      {
+        "case": {
+          "tag": "multi-group-fallback",
+          "rb": 106,
+          "mcs": 28,
+          "symbols": 13,
+          "groups": 1,
+          "lbrm": 950984
+        },
+        "seed": 0,
+        "formal_tbs": 10,
+        "verification": "every LDPC encoder callback byte-for-byte versus production encoder",
+        "shapes": [
+          "[LDPC_VERIFIED_SHAPE] BG=1 Zc=384 K=8448 first=0 segments=11",
+          "[LDPC_VERIFIED_SHAPE] BG=1 Zc=384 K=8448 first=8 segments=11"
+        ],
+        "signature": [
+          "4288990648521643916",
+          "9285439977735420493",
+          "88064"
+        ]
+      }
+    ]
+  },
+  "opt_outs": "direct-only and all-Z224 disable preprocessing retain original fallback and Z384",
+  "build": "full original encoder translation unit with source-integrated fast path, existing XSAI flags/ABI; full codec linked preserving decoder and prior RVV output-packing object",
+  "non_rvv": {
+    "host": "Spark aarch64",
+    "result": "passed",
+    "check": "full encoder translation unit syntax and preprocessing; RVV entry excluded",
+    "production_unchanged": true
+  },
+  "release_library_sha256": "48c2c100f6217c8c5787c5ff929a350b64ada62c19dcbb8de31bceac9e1d5a85",
+  "performance_retest": {
+    "published_source": {
+      "formal_tbs": 600,
+      "mean_us": 37.714317408333336,
+      "cycles_per_tb": 84067.61166666666
+    },
+    "historical_candidate": {
+      "formal_tbs": 600,
+      "mean_us": 38.098749525,
+      "cycles_per_tb": 84304.65166666667
+    }
+  },
+  "rfsim": {
+    "result": "passed",
+    "formal_encoding_calls": 4593,
+    "mean_us": 111.73754517744393,
+    "gnb_error_deltas": {
+      "dlsch": 0,
+      "ulsch": 0
+    },
+    "ue_error_deltas": {
+      "dl_harq": 0,
+      "ul_harq": 0
+    },
+    "loaded_library_sha256": "48c2c100f6217c8c5787c5ff929a350b64ada62c19dcbb8de31bceac9e1d5a85",
+    "hardware_cycles_collected": false
+  },
+  "production_source_and_binaries": "unchanged; independent validation overlays only",
+  "services": "owned RFsim services stopped",
+  "limits": "No fresh full OAI build, independent standard-vector certification, live radio, or non-RVV runtime/performance claim"
+}

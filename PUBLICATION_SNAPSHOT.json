@@ -12,9 +12,9 @@
   ],
   "source_files": 4438,
   "source_bytes": 104236505,
-  "verified_files": 4456,
+  "verified_files": 4467,
   "content_digest_algorithm": "SHA256(sorted(path + NUL + canonical Git blob SHA1 + LF)); Git text normalization applies",
-  "content_sha256": "b1ae73d682fa596f2406105c7371116686e3e9a0df1ce625c646f4a20d4feada",
+  "content_sha256": "0df393ee4eb9e01a5bc2211f0713bee010f3f0fe91a8a4776bd24e9335a44647",
   "digest_exclusions": [
     ".gitignore",
     "PUBLICATION_SNAPSHOT.json",
@@ -29,7 +29,7 @@
     "untracked .orig backup files",
     "external benchmark/LDPC instruction experiment directories"
   ],
-  "validation": "Documented native/integration checks and legacy-MCS9 RFsim regression for new Z224 parity plus existing output packing; not a fresh full OAI build or live-radio acceptance",
+  "validation": "Native and table equivalence; 180 formal full-TB callback bytewise comparisons; 600 formal TB publication-source performance retest; ARM syntax/preprocessing; MCS9 RFsim. Independent codec overlays, production not deployed, not a fresh full OAI build or live-radio acceptance.",
   "license": "Preserve root Apache-2.0 and component-specific notices including OAI LICENSE; see existing component documentation",
   "baseline_source_files": 4438,
   "updates": [
@@ -99,6 +99,32 @@
       "tests": "4 table/guard tests; 68 native expanded matrices; 900 formal full-TB bytewise comparisons; opt-out preprocessing; MCS9 RFsim three-profile comparison",
       "production_deployment": "not performed",
       "rfsim_regression": "passed legacy 50RB/DL MCS9/UL MCS14 configuration; no error growth in formal windows"
+    },
+    {
+      "date": "2026-11-01",
+      "kind": "integrated_bg1_z224_direct_rvv_encoder",
+      "source_base_commit": "87a0b50863277aec31a9e3fc93750edc7307414e",
+      "files": [
+        "vendor/openairinterface5g/openair1/PHY/CODING/nrLDPC_encoder/ldpc_encoder_optim8segmulti.c",
+        "vendor/openairinterface5g/openair1/PHY/CODING/nrLDPC_encoder/ldpc_bg1_z224_direct_rvv.h",
+        "vendor/openairinterface5g/openair1/PHY/CODING/nrLDPC_encoder/ldpc_input_z224_rvv.h",
+        "vendor/openairinterface5g/openair1/PHY/CODING/nrLDPC_encoder/ldpc_bg1_z224_encoder_rvv.h",
+        "tests/ldpc_z224_input_rvv_correctness.c",
+        "tests/ldpc_z224_direct_rvv_correctness.c",
+        "tests/ldpc_z224_encoder_rvv_correctness.c",
+        "tests/test_ldpc_z224_direct_rvv.py",
+        "scripts/check-ldpc-z224-direct-rvv.py",
+        "docs/LDPC_BG1_Z224_DIRECT_RVV_OPTIMIZATION.md",
+        "docs/benchmarks/ldpc-bg1-z224-direct-20261101.json",
+        "docs/benchmarks/ldpc-bg1-z224-direct-integration-20261101.json",
+        "README.md",
+        "docs/LDPC_BG1_Z224_RVV_OPTIMIZATION.md",
+        "PUBLICATION_SNAPSHOT.json"
+      ],
+      "enabled_when": "RVV/non-AVX; BG1/Z224/K4928/Kb22; valid groups of up to 8; independent DIRECT and shared Z224 opt-outs",
+      "tests": "6 table tests; 1088 input groups; 68 direct-kernel matrices; 1088 complete-group byte comparisons; 180 formal full-TB checks across 6 shapes; 600 performance TB per version; ARM syntax/preprocessing; MCS9 RFsim",
+      "production_deployment": "not performed",
+      "rfsim_regression": "passed; no error growth in formal window"
     }
   ],
   "oai_baseline_comparison": {
@@ -115,9 +141,13 @@
       "nrLDPC_encoder/ldpc_bg1_z384_rvv.h",
       "nrLDPC_coding/nrLDPC_coding_segment/nrLDPC_coding_segment_encoder.c",
       "nrLDPC_coding/nrLDPC_coding_segment/write_task_output_rvv.h",
-      "nrLDPC_encoder/ldpc_bg1_z224_rvv.h"
+      "nrLDPC_encoder/ldpc_bg1_z224_rvv.h",
+      "nrLDPC_encoder/ldpc_encoder_optim8segmulti.c",
+      "nrLDPC_encoder/ldpc_input_z224_rvv.h",
+      "nrLDPC_encoder/ldpc_bg1_z224_direct_rvv.h",
+      "nrLDPC_encoder/ldpc_bg1_z224_encoder_rvv.h"
     ],
     "note": "Original K3 .work source comparison applies to the baseline before this documented update"
   },
-  "published_tracked_files": 4461
+  "published_tracked_files": 4472
 }
